@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/concrete.css/3.0.0/concrete.min.css">#}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+    <title>Slushie Notes</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><h2><strong>🥤 SlushyNotes</strong></h2></li>
+            </ul>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('create') }}">Create Note</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <dialog open>
+                        <article>
+                            <header>
+                                {{ category | capitalize }}
+                            </header>
+                            {{ message }}
+                            <footer>
+                                <form method="dialog">
+                                    <button type="submit">Ok</button>
+                                </form>
+                            </footer>
+                        </article>
+                    </dialog>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

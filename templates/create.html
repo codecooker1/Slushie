@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <article>
+            <header>
+                Create a New Post
+            </header>
+            <form method="post" action="/create">
+                <fieldset>
+                    <label>
+                        Title <small>(max 80 characters.)</small>
+                        <input type="text" name="title" placeholder="Enter a title." maxlength="80" required>
+                    </label>
+                    <label>
+                        Your Name <small>(max 50 characters.)</small>
+                        <input type="text" name="name" placeholder="Who are you....?" value="Anonymous" maxlength="50" required>
+                    </label>
+                    <label>
+                        E-mail <small>(max 120 characters.)</small>
+                        <input type="email" name="e-mail" placeholder="Enter your e-mail address" maxlength="120" required>
+                    </label>
+                    <label>
+                        Content
+                        <input type="text" name="content" placeholder="What are you thinking....?" required>
+                    </label>
+                    <label>
+                        <input type="submit" name="submit">
+                    </label>
+                </fieldset>
+            </form>
+        </article>
+    </section>
+{% endblock %}

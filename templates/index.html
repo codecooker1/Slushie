@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
-{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/concrete.css/3.0.0/concrete.min.css">#}
-{#    <link rel="stylesheet" href="https://unpkg.com/boltcss/bolt.min.css">#}
-{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">#}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
-    <title>Title</title>
-</head>
-<body>
-<header>
-    <h1>Hey Welcome To The Blog</h1>
-</header>
-<main>
-    <label for="Search">
-        <input type="text" placeholder="Enter keyword to search....">
-    </label>
+{% extends 'base.html' %}
 
-</main>
-<footer>
-    This is created by @codecooker1
-</footer>
-</body>
-</html>
+
+{% block content %}
+        <section>
+            <h2>Latest Posts</h2>
+
+            {% if posts %}
+                {% for post in posts %}
+                    <article>
+                        <header>
+                            <h3> {{ post.title | escape }} </h3>
+                        </header>
+                        <main>
+                            <blockquote>
+                                “{{ post.content | escape }}”
+                                <footer>
+                                    <cite>— <strong>{{ post.name | escape }}</strong> on {{ post.pub_date.strftime('%B %d, %Y at %H:%M') }} UTC</cite>
+                                </footer>
+                            </blockquote>
+                        </main>
+                        <footer>
+                            <nav>
+                                <ul><li><a href="{{ url_for('note', id=post.id) }}">Share</a></li><li><a href="{{ url_for("delete", id=post.id) }}">Delete</a></li></ul>
+                            </nav>
+                        </footer>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <article>
+                    <p>No posts yet. Be the first to <a href="{{ url_for('create') }}">write one</a>!</p>
+                </article>
+            {% endif %}
+
+        </section>
+{% endblock %}

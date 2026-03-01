@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <a href="{{ url_for('home') }}"><— Back</a>
+        <hr>
+    </section>
+    <article>
+        <header>
+            <h3> {{ post.title | escape }} </h3>
+        </header>
+        <main>
+            <blockquote>
+                “{{ post.content | escape }}”
+                <footer>
+                    <cite>— <strong>{{ post.name | escape }}</strong> on {{ post.pub_date.strftime('%B %d, %Y at %H:%M') }} UTC</cite>
+                </footer>
+            </blockquote>
+        </main>
+        <footer>
+            <nav>
+                <ul><li><a href="{{ url_for('note', id=post.id) }}">Share</a></li><li><a href="{{ url_for("delete", id=post.id) }}">Delete</a></li></ul>
+            </nav>
+        </footer>
+    </article>
+{% endblock %}

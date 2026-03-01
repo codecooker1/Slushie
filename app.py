@@ -55,7 +55,8 @@ def delete(id):
 
         if not submitted_token:
             if submitted_email == post.email:
-                flash('Email verified! Now enter your secure deletion code.', 'success')
+                flash('Now enter the code sent to your mail to delete!.', 'success')
+                print(post.token)
                 return render_template('delete.html', id=id, step=2, email_value=submitted_email)
             else:
                 flash('That email does not match the author of this note.', 'error')
@@ -70,9 +71,7 @@ def delete(id):
                 flash('Incorrect verification code. Deletion failed.', 'error')
                 return render_template('delete.html', id=id, step=2, email_value=submitted_email)
 
-    #db.session.delete(post)
-    #db.session.commit()
-    return redirect(url_for('home'))
+    return render_template('delete.html', id=id, state=1)
 
 @app.route('/verify/<token>')
 def verify(token):

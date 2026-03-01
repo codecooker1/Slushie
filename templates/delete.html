@@ -7,14 +7,14 @@
             Your Email:
             <input type="email" name="e-mail" placeholder="Enter your e-mail address" maxlength="120" required>
         </label>
-        {% if state == 'delete' %}
-        <label>
-            Verification Code:
-            <input type="text" name="verification" placeholder="Enter the verification code from your email..." maxlength="36" required>
-        </label>
-        <button type="submit" style="background-color: #AF291D; color: #FAEEEB"> {{ state }} </button>
+        {% if state == 2 %}
+            <label>
+                Verification Code:
+                <input type="text" name="verification" placeholder="Enter the verification code from your email..." maxlength="36" required>
+            </label>
+            <button type="submit" style="background-color: #AF291D; color: #FAEEEB"> {{ state }} </button>
         {% else %}
-        <button type="submit">VERIFY</button>
+            <button type="submit">VERIFY</button>
         {% endif %}
     </form>
 </section>

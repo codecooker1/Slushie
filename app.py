@@ -1,10 +1,5 @@
-import uuid
-from hmac import new
 from os import environ
-
 from flask import Flask, render_template, request, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-
 from Models import Post, db
 
 app = Flask(__name__)
@@ -49,18 +44,18 @@ def delete(id):
         flash('Note not found.', 'error')
         return redirect(url_for('home'))
 
-    if request.method == 'POST':
-        submitted_email = request.form.get('e-mail')
-        submitted_token = request.form.get('verification')
+    submitted_email = request.form.get('e-mail')
+    submitted_token = request.form.get('verification')
 
+    if request.method == 'POST':
         if not submitted_token:
             if submitted_email == post.email:
                 flash('Now enter the code sent to your mail to delete!.', 'success')
                 print(post.token)
-                return render_template('delete.html', id=id, step=2, email_value=submitted_email)
+                return render_template('delete.html', id=id, delete=True, email_value=submitted_email)
             else:
                 flash('That email does not match the author of this note.', 'error')
-                return render_template('delete.html', id=id, step=1, email_value='')
+                return render_template('delete.html', id=id, delete=False, email_value='')
         else:
             if submitted_email == post.email and submitted_token == post.token:
                 db.session.delete(post)
@@ -69,17 +64,15 @@ def delete(id):
                 return redirect(url_for('home'))
             else:
                 flash('Incorrect verification code. Deletion failed.', 'error')
-                return render_template('delete.html', id=id, step=2, email_value=submitted_email)
+                return render_template('delete.html', id=id, delete=True, email_value=submitted_email)
 
-    return render_template('delete.html', id=id, state=1)
+    return render_template('delete.html', id=id, delete=False)
 
 @app.route('/verify/<token>')
 def verify(token):
-    # Search the database for a post with this exact token
     post = Post.query.filter_by(token=token).first()
 
     if post and not post.is_published:
-        # Mark as published and save the changes to the database
         post.is_published = True
         db.session.commit()
 

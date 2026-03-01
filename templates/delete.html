@@ -1,21 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<section>
-    <form method="post" action="/delete/{{ id }}">
-        <label>
-            Your Email:
-            <input type="email" name="e-mail" placeholder="Enter your e-mail address" maxlength="120" required>
-        </label>
-        {% if state == 2 %}
+    <section>
+        <a href="{{ url_for('home') }}"><— Back</a>
+        <hr>
+    </section>
+    <article>
+        <form method="post" action="/delete/{{ id }}">
             <label>
-                Verification Code:
-                <input type="text" name="verification" placeholder="Enter the verification code from your email..." maxlength="36" required>
+                Your Email:
+                <input type="email" name="e-mail" placeholder="Enter your e-mail address" maxlength="120" value="{{ email_value }}" required>
             </label>
-            <button type="submit" style="background-color: #AF291D; color: #FAEEEB"> {{ state }} </button>
-        {% else %}
-            <button type="submit">VERIFY</button>
-        {% endif %}
-    </form>
-</section>
+            {% if delete %}
+                <label>
+                    Verification Code:
+                    <input type="text" name="verification" placeholder="Enter the verification code from your email..." maxlength="36" required autofocus>
+                </label>
+                <button type="submit" style="background-color: #AF291D; color: #FAEEEB"> DELETE </button>
+            {% else %}
+                <button type="submit">VERIFY</button>
+            {% endif %}
+        </form>
+    </article>
 {% endblock %}

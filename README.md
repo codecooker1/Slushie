@@ -23,7 +23,7 @@ Make sure you have Python installed. This project uses [uv](https://github.com/a
      ```bash
      # Create and activate the virtual environment
      python -m venv .venv
-     source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
+     source .venv/bin/activate
 
      # Install dependencies
      pip install -r requirements.txt
@@ -44,6 +44,9 @@ Make sure you have Python installed. This project uses [uv](https://github.com/a
    python app.py
    ```
 
-## Contribution
+## Contributing
+My main goal with this project is to **KISS** (Keep It Simple, Stupid). 
+If you spot a bug or want to add a *simple* missing feature, feel free to open a PR. However, if a feature adds unnecessary complexity or requires pulling in heavy front-end frameworks, it will get the axe.
 
-If you want to make the code better or introduce new features, feel free to create a pull request with your changes.
+## License
+This project is fully open-source and licensed under the **GPLv3 License**. See the `LICENSE` file for more details.

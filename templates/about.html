@@ -1,5 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content%}
+<article>
+<header>
+    <h3>About</h3>
+</header>
+    <section>
+    <h5>What is it?</h5><hr>
+    <p>This is just a super simple anonymous note/quote sharing app. No bloat, no selling your soul/data.
+        Simply drop your thoughts or fav quote without any fuss, read what others have left behind, and bounce.
+        It really is that easy.</p>
+    <blockquote>
+        <p>“Saying you don't need privacy because you have nothing to hide is like saying you don't need freedom of speech because you have nothing to say.”</p>
+        <footer>
+            <cite>— Edward Snowden</cite>
+        </footer>
+    </blockquote>
+    </section>
 
+    <section>
+        <h5>Tech Stack</h5><hr>
+        <p>The absolute core part of it is built in python using <a href="https://pypi.org/project/Flask/">Flask</a>.
+            The server side pages are generated using <a href="https://pypi.org/project/Jinja2/">Jinja2</a> template engine and everything is stored in a single <a href="https://www.sqlite.org/">SQLite</a> <abbr title="Database">DB</abbr>.</p>
+        <p>A funny thing I just realized: I have not written a single line of <abbr title="Javascript">JS</abbr>.
+            Also, I only wrote a couple of lines of <abbr title="Cascading Style Sheets">CSS</abbr> thanks to <a href="https://picocss.com/">PicoCSS</a> handling all the heavy lifting.
+            Moreover, writing <abbr title="Hypertext Markup Language">HTML</abbr> without the ‘&lt;div&gt;’ hell of bloated <abbr title="Javascript">JS</abbr> frameworks is quite relaxing tbh. </p>
+        <p>I can't really put my finger on exactly why but it feels like wayy less <abbr title="Pain In The Ass">PITA</abbr>
+            to develop web stuff when I don't have to wrestle with the modern <abbr title="Javascript">JS</abbr> ecosystem??</p>
+        <blockquote>
+            <p>“JavaScript makes me want to flip the table and say ‘Fuck this shit’, but I can never be sure what ‘this’ refers to.”</p>
+            <footer>
+                <cite>— <a href="https://x.com/oscherler/status/660049264903643136">@oscherler</a> </cite>
+            </footer>
+        </blockquote>
+    </section>
+
+    <section>
+        <header><h5>Final Thoughts</h5></header><hr>
+        <p>My goal with this project was to <abbr title="Keep It Simple Stupid">KISS</abbr>, like as much as possible.
+            If a feature meant adding unnecessary complexity, it got the axe. Regardless of whether that might have made it more usable or not. </p>
+        <p>I don't know what else to write here. It does what it says on the tin.
+            Oh, one more thing before I finish,
+                the code is fully open-source on <a href="https://github.com/codecooker1/Slushie">GitHub</a> under GPLv3 license.
+            So, feel free to make contributions if you spot a bug or wanna add some missing feature or star the project like.</p>
+        <p>Hope your life be peaceful and your contribution graph stay green!</p>
+        <blockquote>
+            <p>“An idiot admires complexity, a genius admires simplicity, a physicist tries to make it simple, for an idiot anything the more complicated it is the more he will admire it, if you make something so clusterfucked he can't understand it he's gonna think you're a god cause you made it so complicated nobody can understand it. That's how they write journals in Academics, they try to make it so complicated people think you're a genius”</p>
+            <footer>
+                <cite>— Terry A. Davis</cite>
+            </footer>
+        </blockquote>
+    </section>
+
+<footer>
+    <small>Created with ❤️️ by <a href="https://github.com/codecooker1/">@codecooker1</a></small>
+</footer>
+</article>
 {% endblock %}
